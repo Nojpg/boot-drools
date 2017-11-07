@@ -1,0 +1,65 @@
+package rules
+
+global pirate.nojpg.model.Payment payment;
+import pirate.nojpg.model.Deposit
+rule "Rule 1"
+	when 
+		depositObject: Deposit(sumOfDeposit<100 && termOfDeposit==1 && sumOfDeposit>0)
+	then
+		payment.setPersentages(4);
+	end
+rule "Rule 2"
+	when 
+		depositObject: Deposit(sumOfDeposit<100 && termOfDeposit==2 && sumOfDeposit>0)
+	then
+	    payment.setPersentages(5);
+	end
+
+rule "Rule 3"
+    when
+        depositObject: Deposit(sumOfDeposit<100 && termOfDeposit==3 && sumOfDeposit>0)
+    then
+        payment.setPersentages(6);
+    end
+
+rule "Rule 4"
+    when
+        depositObject: Deposit(sumOfDeposit<500 && getTermOfDeposit()==1 && sumOfDeposit>100)
+    then
+        payment.setPersentages(6);
+    end
+
+rule "Rule 5"
+    when
+        depositObject: Deposit(sumOfDeposit<500 && termOfDeposit==2 && sumOfDeposit>100)
+    then
+        payment.setPersentages(7);
+    end
+
+rule "Rule 6"
+    when
+        depositObject: Deposit(sumOfDeposit<500 && termOfDeposit==3 && sumOfDeposit>100)
+    then
+        payment.setPersentages(8);
+    end
+
+rule "Rule 7"
+    when
+        depositObject: Deposit(sumOfDeposit<1000 && termOfDeposit==1 && sumOfDeposit>500)
+    then
+        payment.setPersentages(7);
+    end
+
+rule "Rule 8"
+    when
+        depositObject: Deposit(sumOfDeposit<1000 && termOfDeposit==2 && sumOfDeposit>500)
+    then
+        payment.setPersentages(8);
+    end
+
+rule "Rule 9"
+    when
+        depositObject: Deposit(sumOfDeposit<1000 && termOfDeposit==3 && sumOfDeposit>500)
+    then
+        payment.setPersentages(9);
+    end
